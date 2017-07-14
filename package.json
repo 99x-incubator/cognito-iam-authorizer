@@ -1,0 +1,17 @@
+{
+  "name": "custom_authoriser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "custom_authoriser_blueprint.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.5.0",
+    "aws-sdk": "^2.83.0",
+    "jsonwebtoken": "^7.4.1",
+    "lodash": "^4.17.4"
+  }
+}

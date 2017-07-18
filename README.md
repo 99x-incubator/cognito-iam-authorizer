@@ -1,8 +1,8 @@
-## Cognito IAM Authoriser
+# cognito-iam-authorizer
 
-## Description
+Cognito IAM Authorizer which authenticates Cognito JWT token and attach Cognito UserPool User Groups Permission to invoke API Gateway.
 
-This module helps retreive the IAM Cognito User Group policies for a given Cognito User. It is ideal to be used in a AWS Lambda function since it has been optimised to fetch roles and policies parallely. It also provides a method to validate the ID Token that is sent by Cognito after the user has been validated.
+It is ideal to be used in a AWS Lambda function since it has been optimised to fetch roles and policies parallely. It also provides a method to validate the ID Token that is sent by Cognito after the user has been validated.
 
 ## Installation
 

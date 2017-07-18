@@ -1,4 +1,3 @@
-
 'use strict';
 
 const jwt = require('jsonwebtoken');
@@ -91,38 +90,34 @@ AwsCustomAuthoriserToolkit.validateCognitoIdToken = (jwtToken, jwkPem, iss, call
     
     //Fail if the token is not jwt
     if (!decodedJwt) {
-        console.log("Not a valid JWT token");
-        callback("Unauthorized");
+        callback("Not a valid JWT token");
         return;
     }
 
     //Fail if token is not from your User Pool
     if (decodedJwt.payload.iss != iss) {
-        console.log("invalid issuer");
-        callback("Unauthorized");
+        callback("invalid issuer");
         return;
     }
 
     //Reject the jwt if it's not an 'Access Token'
-    // if (decodedJwt.payload.token_use != 'access') {
-    //     console.log("Not an access token");
-    //     context.fail("Unauthorized");
-    //     return;
-    // }
+    if (!(decodedJwt.payload.token_use == 'id' || decodedJwt.payload.token_use == 'access')) {
+        callback("token_use is invalid");
+        return;
+    }
 
     //Get the kid from the token and retrieve corresponding PEM
     var kid = decodedJwt.header.kid;
     var pem = jwkPem[kid];
     if (!pem) {
-        console.log('Invalid access token');
-        callback("Unauthorized");
+        callback("Invalid access token");
         return;
     }
 
-    //Verify the signature of the JWT token to ensure it's really coming from your User Pool
-    jwt.verify(jwtToken, pem, { issuer: iss }, function(err, payload) {
+    //Verify the signature of the JWT token to ensure it's really coming from your User Pool and that it has not expired
+    jwt.verify(jwtToken, pem, { issuer: iss, maxAge: 3600000}, function(err, payload) {
       if(err) {
-        callback("Unauthorized");
+        callback(err);
       } else {
         callback(null, "Authorised user");
       }

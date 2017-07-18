@@ -1,7 +1,7 @@
 {
-  "name": "aws-custom-authoriser-toolkit",
+  "name": "cognito-iam-authoriser",
   "version": "0.0.1",
-  "description": "AWS Custom Authoriser Toolkit",
+  "description": "A tool to help retrieve IAM policy documents for Cognito User groups",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

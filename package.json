@@ -1,0 +1,17 @@
+{
+  "name": "cognito-iam-authoriser",
+  "version": "0.0.1",
+  "description": "A tool to help retrieve IAM policy documents for Cognito User groups",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.5.0",
+    "aws-sdk": "^2.83.0",
+    "jsonwebtoken": "^7.4.1",
+    "lodash": "^4.17.4"
+  }
+}
